@@ -22,3 +22,7 @@ The Cloud9 IDE team
 
 Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
 To watch some training videos, visit http://www.youtube.com/user/c9ide
+20121262 : Nguyen The Bao 
+20122619 : Hoang Van Trung 
+20122316 : Nguyen Dinh Quy 
+20122506 : Ngo Van Thinh
