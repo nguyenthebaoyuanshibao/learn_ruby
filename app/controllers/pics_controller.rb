@@ -2,9 +2,13 @@ class PicsController < ApplicationController
     before_action :find_pic, only: [:show, :edit, :update, :destroy, :upvote]
     before_action :authenticate_user!, except: [:index, :show]
     def index  
-        @pics =Pic.all.order("created_at DESC")
+        @pics =Pic.all
+        if params[:search]
+          @pics = Pic.search(params[:search]).order("created_at DESC")
+        else
+          @pics=Pic.all.order("created_at DESC")    
+        end
     end
-    
     def show
         @pic_comment = PicComment.new
     end

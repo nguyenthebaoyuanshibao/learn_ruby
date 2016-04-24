@@ -20,19 +20,20 @@
               - if user_signed_in?
                 = link_to "Fix Pic",edit_pic_path, class: "btn btn-info"
                 = link_to "Delete",pic_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger"
-%h2 Comment
-%ul
-  - @pic.pic_comment.each do |pic_comment|
-    %li
-      = pic_comment.comment
-      (
-      %i>= pic_comment.user_id
-      )
-= form_for(@pic_comment) do |f|
-  .field
-    = f.label :comment
-    %br
-      = f.text_field :comment
-      = f.hidden_field :pic_id, :value => @pic.id
-  .action
-    = f.submit                
+#comment.col-sm-6.col-sm-offset-3
+  %h2 Comment
+  %ul
+    - @pic.pic_comment.each do |pic_comment|
+      %li
+        = pic_comment.comment
+        (
+        %i>= pic_comment.user_id
+        )
+  = form_for(@pic_comment) do |f|
+    .field
+      = f.label :"Write your comment here"
+      %br
+        = f.text_field :comment
+        = f.hidden_field :pic_id, :value => @pic.id
+    .action
+      = f.submit :Post, class: "btn btn-primary btn-sm"                

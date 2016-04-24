@@ -1,6 +1,9 @@
-.col-md-6.col-md-offset-3
+.col-md-10.col-md-offset-1
   #pics.transitions-enabled
     - @pics.each do |pic|
-      .box.panel.panel-default
+      .box.panel.panel-default.col-sm-6
         =link_to (image_tag pic.image.url), pic
         %h2= link_to pic.title, pic
+- if @pics.blank?
+  %h4
+    There are no picss containing the term #{params[:search]}.
