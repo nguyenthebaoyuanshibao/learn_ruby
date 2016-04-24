@@ -11,7 +11,7 @@
           .col-md-6
             %p.user
               by
-              = @pic.user.email
+              = @pic.user.try(:email)
           .col.md-6
             .btn-group.pull-right
               = link_to like_pic_path(@pic), method: :put, class: "btn btn-default" do
@@ -20,3 +20,19 @@
               - if user_signed_in?
                 = link_to "Fix Pic",edit_pic_path, class: "btn btn-info"
                 = link_to "Delete",pic_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger"
+%h2 Comment
+%ul
+  - @pic.pic_comment.each do |pic_comment|
+    %li
+      = pic_comment.comment
+      (
+      %i>= pic_comment.user_id
+      )
+= form_for(@pic_comment) do |f|
+  .field
+    = f.label :comment
+    %br
+      = f.text_field :comment
+      = f.hidden_field :pic_id, :value => @pic.id
+  .action
+    = f.submit                
